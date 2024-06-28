@@ -17,7 +17,7 @@ class Particle{
     }
     draw(){
         context.beginPath();
-        context.arc(this.x,this.y,ths.radius,0,2 * Math.PI);
+        context.arc(this.x,this.y,this.radius,0,2 * Math.PI);
         context.strokeStyle = `hsl(${this.hue} 100% 50%)`
         context.stroke();
 
@@ -42,6 +42,17 @@ class Particle{
         this.y = this.y - this.dy;
     }
 }
+
+
+const handleDrawCircle = (event) => {
+    a = event.pageX;
+    b = event.pageY;
+    for(let i=0; i<50; i++){
+        const particle = new Particle(a,b);
+        particleArray.push(particle);
+    }   
+};
+
 const animate = ()  =>{
     context.clearRect(0,0,canvas.width,canvas.height);
     particleArray.forEach((particle) => {
@@ -52,14 +63,7 @@ const animate = ()  =>{
 };
 
 animate();
-const handleDrawCircle = (event) => {
-    a = event.pageX;
-    b = event.pageY;
-    for(let i=0; i<50; i++){
-        const particle = new Particle(a,b);
-        particleArray.push(particle);
-    }   
-};
+
 canvas.addEventListener("click",handleDrawCircle);
 canvas.addEventListener("resize",()=>{
     canvas.width = window.innerWidth;
