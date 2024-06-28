@@ -17,7 +17,7 @@ var myObstacle;
 
 function startGame() {
     myGameArea.start();
-    myGamePiece = new compenent(30,30,"red",10,120);
+    myGamePiece = new compenent(30,30,"blue",10,120);
     myObstacle = new compenent(10,200,"green",300,120);
 }
 
@@ -83,6 +83,7 @@ function updateGameArea(){
     }else
     {
         myGameArea.clear();
+        myObstacle.x += -1;
         myGameArea.speedX = 0;
         myGameArea.speedY = 0;
         if (myGameArea.key && myGameArea.key ==37) {myGamePiece.speedX =-1;}
