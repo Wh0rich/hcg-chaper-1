@@ -52,11 +52,6 @@ const animate = ()  =>{
 };
 
 animate();
-canvas.addEventListener("click",handleDrawCircle);
-canvas.addEventListener("resize",()=>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
 const handleDrawCircle = (event) => {
     a = event.pageX;
     b = event.pageY;
@@ -65,3 +60,8 @@ const handleDrawCircle = (event) => {
         particleArray.push(particle);
     }   
 };
+canvas.addEventListener("click",handleDrawCircle);
+canvas.addEventListener("resize",()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
