@@ -1,11 +1,23 @@
 class Game{
     constructor(){
+        this.addEventListener=new (window.AudioContext||window.webkitAudioContext)();
+
+        this.sfx = new SFX({
+            context : this.audiocontext,
+            scr:{mp3:"quick_swish.mp3",webm:"quick_swish.webm"},
+            loop: false
+        })
         this.canvas = document.getElementById("game");
         this.context = this.canvas.getContext("2d");
         this.context.font = "30px Verdana";
         this.sprites = [];
 
         const game = this;
+
+        const btn1 = document.getElementById("playSndBtn");
+
+        btn1.addEventListener('click',function(){game.sfx.play})
+
         this.loadJSON("flowers", function (data, game){
             game.spriteData = JSON.parse(data);
             game.spriteImage = new Image();
